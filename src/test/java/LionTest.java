@@ -9,6 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -33,5 +34,9 @@ public class LionTest {
 
         List<String> food = lion.getFood();
         assertEquals(food, mealList);
+    }
+    @Test
+    public void testInvalidSex() {
+        assertThrows(Exception.class, () -> new Lion("InvalidSex", feline));
     }
 }

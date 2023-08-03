@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 @RunWith(Parameterized.class)
 public class LionTestParams {
@@ -29,19 +30,14 @@ public class LionTestParams {
     public static Object[][] params() {
         return new Object[][]{
                 {"Самец", true},
-                {"Самка", false},
-                {"", false}
+                {"Самка", false}
         };
     }
 
     @Test
-    public void doesHaveMane(){
-        try {
+    public void doesHaveMane() throws Exception {
             Lion lion = new Lion(sex, feline);
             boolean actualResult = lion.doesHaveMane();
             assertEquals(expectedHasMane, actualResult);
-        } catch (Exception e) {
-            Assert.assertEquals(e.getMessage(), "Используйте допустимые значения пола животного - самец или самка");
-        }
     }
 }
